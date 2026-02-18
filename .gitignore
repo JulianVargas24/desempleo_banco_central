@@ -1,0 +1,24 @@
+# Credenciales y configuración sensible
+credenciales*
+*.env
+.env*
+config.ini
+secrets.*
+
+# Entorno virtual
+venv/
+env/
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS bronze_imacec (
+    fecha DATE NOT NULL,
+    imacec DECIMAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS silver_imacec (
+    id SERIAL PRIMARY KEY,
+    fecha DATE NOT NULL,
+	fecha_carga TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    imacec DECIMAL NOT NULL
+);

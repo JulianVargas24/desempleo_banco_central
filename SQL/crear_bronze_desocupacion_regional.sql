@@ -1,0 +1,61 @@
+CREATE TABLE IF NOT EXISTS bronze_desocupacion_regional (
+    fecha DATE NOT NULL,
+    arica_parinacota DECIMAL NOT NULL,
+	tarapaca DECIMAL NOT NULL,
+	antofagasta DECIMAL NOT NULL,
+	atacama DECIMAL NOT NULL,
+	coquimbo DECIMAL NOT NULL,
+	valparaiso DECIMAL NOT NULL,
+	metropolitana DECIMAL NOT NULL,
+	ohiggins DECIMAL NOT NULL,
+	maule DECIMAL NOT NULL,
+	nuble DECIMAL NOT NULL,
+	bio_bio DECIMAL NOT NULL,
+	araucania DECIMAL NOT NULL,
+	los_rios DECIMAL NOT NULL,
+	los_lagos DECIMAL NOT NULL,
+	aysen DECIMAL NOT NULL,
+	magallanes DECIMAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS silver_desocupacion_regional (
+    fecha DATE NOT NULL,
+    arica_parinacota DECIMAL NOT NULL,
+	tarapaca DECIMAL NOT NULL,
+	antofagasta DECIMAL NOT NULL,
+	atacama DECIMAL NOT NULL,
+	coquimbo DECIMAL NOT NULL,
+	valparaiso DECIMAL NOT NULL,
+	metropolitana DECIMAL NOT NULL,
+	ohiggins DECIMAL NOT NULL,
+	maule DECIMAL NOT NULL,
+	nuble DECIMAL NOT NULL,
+	bio_bio DECIMAL NOT NULL,
+	araucania DECIMAL NOT NULL,
+	los_rios DECIMAL NOT NULL,
+	los_lagos DECIMAL NOT NULL,
+	aysen DECIMAL NOT NULL,
+	magallanes DECIMAL NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS gold.gold_desocupacion_regional (
+    id SERIAL PRIMARY KEY,
+    fecha DATE UNIQUE NOT NULL,
+	fecha_carga TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    arica_parinacota DECIMAL NOT NULL,
+	tarapaca DECIMAL NOT NULL,
+	antofagasta DECIMAL NOT NULL,
+	atacama DECIMAL NOT NULL,
+	coquimbo DECIMAL NOT NULL,
+	valparaiso DECIMAL NOT NULL,
+	metropolitana DECIMAL NOT NULL,
+	ohiggins DECIMAL NOT NULL,
+	maule DECIMAL NOT NULL,
+	nuble DECIMAL NOT NULL,
+	bio_bio DECIMAL NOT NULL,
+	araucania DECIMAL NOT NULL,
+	los_rios DECIMAL NOT NULL,
+	los_lagos DECIMAL NOT NULL,
+	aysen DECIMAL NOT NULL,
+	magallanes DECIMAL NOT NULL
+);
