@@ -12,6 +12,6 @@ CREATE TABLE IF NOT EXISTS gold_desocupacion_nacional (
     id SERIAL PRIMARY KEY,
     fecha DATE UNIQUE NOT NULL,
     desocupacion_nacional DECIMAL NOT NULL,
-    fecha_carga TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+    fecha_carga TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 

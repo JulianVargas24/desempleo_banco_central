@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS bronze_desocupacion_regional (
+CREATE TABLE IF NOT EXISTS bronze.bronze_desocupacion_regional (
     fecha DATE NOT NULL,
     arica_parinacota DECIMAL NOT NULL,
 	tarapaca DECIMAL NOT NULL,
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS bronze_desocupacion_regional (
 	magallanes DECIMAL NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS silver_desocupacion_regional (
+CREATE TABLE IF NOT EXISTS silver.silver_desocupacion_regional (
     fecha DATE NOT NULL,
     arica_parinacota DECIMAL NOT NULL,
 	tarapaca DECIMAL NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS silver_desocupacion_regional (
 CREATE TABLE IF NOT EXISTS gold.gold_desocupacion_regional (
     id SERIAL PRIMARY KEY,
     fecha DATE UNIQUE NOT NULL,
-	fecha_carga TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	fecha_carga TIMESTAMPTZ NOT NULL DEFAULT CURRENT_TIMESTAMP,
     arica_parinacota DECIMAL NOT NULL,
 	tarapaca DECIMAL NOT NULL,
 	antofagasta DECIMAL NOT NULL,
