@@ -1,4 +1,3 @@
-import psycopg2
 from utils.conexion_postgre import get_engine
 
 
