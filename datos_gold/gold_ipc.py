@@ -7,10 +7,10 @@ from utils.conexion_postgre import get_engine
 # ======================================================
 
 SILVER_SCHEMA = "silver"
-SILVER_TABLE = "silver_desocupacion_nacional"
+SILVER_TABLE = "silver_ipc"
 
 GOLD_SCHEMA = "gold"
-GOLD_TABLE = "gold_desocupacion_nacional"
+GOLD_TABLE = "gold_ipc"
 
 
 # ======================================================
@@ -20,6 +20,7 @@ GOLD_TABLE = "gold_desocupacion_nacional"
 engine = get_engine()
 conn = engine.raw_connection()
 cursor = conn.cursor()
+
 
 # ======================================================
 # 1️⃣ VALIDAR QUE SILVER NO ESTÉ VACÍO
@@ -33,9 +34,9 @@ cursor.execute(f"""
 silver_count = cursor.fetchone()[0]
 
 if silver_count == 0:
-    raise ValueError("❌ Silver está vacío. No se puede sincronizar.")
+    raise ValueError("❌ Silver IPC está vacío. No se puede sincronizar.")
 
-print(f"🔎 Filas en Silver: {silver_count}")
+print(f"🔎 Filas en Silver IPC: {silver_count}")
 
 
 # ======================================================
@@ -44,8 +45,10 @@ print(f"🔎 Filas en Silver: {silver_count}")
 
 insert_sql = f"""
     INSERT INTO {GOLD_SCHEMA}.{GOLD_TABLE}
-        (fecha, desocupacion_nacional)
-    SELECT s.fecha, s.desocupacion_nacional
+        (fecha, ipc)
+    SELECT
+        s.fecha,
+        s.ipc
     FROM {SILVER_SCHEMA}.{SILVER_TABLE} s
     WHERE NOT EXISTS (
         SELECT 1
@@ -64,11 +67,12 @@ print("✅ INSERT de nuevos registros completado.")
 
 update_sql = f"""
     UPDATE {GOLD_SCHEMA}.{GOLD_TABLE} g
-    SET desocupacion_nacional = s.desocupacion_nacional,
+    SET
+        ipc = s.ipc,
         fecha_carga = CURRENT_TIMESTAMP
     FROM {SILVER_SCHEMA}.{SILVER_TABLE} s
     WHERE g.fecha = s.fecha
-    AND g.desocupacion_nacional IS DISTINCT FROM s.desocupacion_nacional;
+    AND g.ipc IS DISTINCT FROM s.ipc;
 """
 
 cursor.execute(update_sql)
@@ -93,7 +97,7 @@ print("🗑️ Eliminación de registros obsoletos completada.")
 
 
 # ======================================================
-# 5️⃣ COMMIT TOTAL
+# 5️⃣ COMMIT
 # ======================================================
 
 conn.commit()
@@ -110,7 +114,7 @@ cursor.execute(f"""
 
 result = cursor.fetchone()
 
-print("\n📊 Estado final GOLD:")
+print("\n📊 Estado final GOLD IPC:")
 print(f"Total filas: {result[0]}")
 print(f"Desde: {result[1]}")
 print(f"Hasta: {result[2]}")
@@ -118,4 +122,4 @@ print(f"Hasta: {result[2]}")
 cursor.close()
 conn.close()
 
-print("\n🚀 Sincronización incremental Silver → Gold completada correctamente.")
+print("\n🚀 Sincronización incremental Silver → Gold IPC completada correctamente.")

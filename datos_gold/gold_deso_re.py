@@ -18,18 +18,8 @@ GOLD_TABLE = "gold_desocupacion_regional"
 # ======================================================
 
 engine = get_engine()
-conn_url = engine.url
-
-conn = psycopg2.connect(
-    dbname=conn_url.database,
-    user=conn_url.username,
-    password=conn_url.password,
-    host=conn_url.host,
-    port=conn_url.port
-)
-
+conn = engine.raw_connection()
 cursor = conn.cursor()
-
 
 # ======================================================
 # 1️⃣ VALIDAR QUE SILVER NO ESTÉ VACÍO
