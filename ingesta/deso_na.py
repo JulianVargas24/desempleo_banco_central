@@ -2,35 +2,37 @@ import bcchapi
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
 
-# Consumo api banco central
-siete = bcchapi.Siete(file="credenciales.txt")
-series_code = "F049.DES.TAS.INE9.10.M"
+def run_bronze_deso_na():
 
-df = siete.cuadro(
-    series=[series_code],
-    nombres=["desocupacion_nacional"],
-    desde="2015-01-01",
-    frecuencia="ME",
-    observado={"desocupacion_nacional": "last"}
-)
+    # Consumo API Banco Central
+    siete = bcchapi.Siete(file="credenciales.txt")
+    series_code = "F049.DES.TAS.INE9.10.M"
 
-# Reset index para tener fecha como columna
-df = df.reset_index()
-df.columns = ["fecha", "desocupacion_nacional"]
+    df = siete.cuadro(
+        series=[series_code],
+        nombres=["desocupacion_nacional"],
+        desde="2015-01-01",
+        frecuencia="ME",
+        observado={"desocupacion_nacional": "last"}
+    )
 
-# Conexión postgresql
-engine = get_engine()
+    # Reset index
+    df = df.reset_index()
+    df.columns = ["fecha", "desocupacion_nacional"]
 
-# Borrar datos existentes de la tabla
-truncate_table(engine, "bronze", "bronze_desocupacion_nacional")
+    # Conexión
+    engine = get_engine()
 
-# Ingestar a postgresql
-df.to_sql(
-    name="bronze_desocupacion_nacional",
-    schema="bronze",
-    con=engine,
-    if_exists="append",
-    index=False
-)
+    # Truncate Bronze
+    truncate_table(engine, "bronze", "bronze_desocupacion_nacional")
 
-print(df)
+    # Insertar datos
+    df.to_sql(
+        name="bronze_desocupacion_nacional",
+        schema="bronze",
+        con=engine,
+        if_exists="append",
+        index=False
+    )
+
+    print("✅ Bronze desocupación nacional cargado correctamente")

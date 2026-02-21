@@ -1,23 +1,25 @@
 from utils.conexion_postgre import get_engine
 from utils.funciones import sync_gold
 
-# CONFIG
-SILVER_SCHEMA = "silver"
-SILVER_TABLE = "silver_ipc"
+def run_gold_ipc():
+    # CONFIG
+    SILVER_SCHEMA = "silver"
+    SILVER_TABLE = "silver_ipc"
 
-GOLD_SCHEMA = "gold"
-GOLD_TABLE = "gold_ipc"
+    GOLD_SCHEMA = "gold"
+    GOLD_TABLE = "gold_ipc"
 
-# CONEXIÓN
-engine = get_engine()
-conn = engine.raw_connection()
-cursor = conn.cursor()
+    # CONEXIÓN
+    engine = get_engine()
+    conn = engine.raw_connection()
+    cursor = conn.cursor()
 
-# Funcion incremnetal esta en utils.funciones
-sync_gold(
-    silver_schema="silver",
-    silver_table="silver_ipc",
-    gold_schema="gold",
-    gold_table="gold_ipc",
-    columns=["ipc"],
-)
+    # Funcion incremnetal esta en utils.funciones
+    def run_gold_ipc():
+        sync_gold(
+        silver_schema="silver",
+        silver_table="silver_ipc",
+        gold_schema="gold",
+        gold_table="gold_ipc",
+        columns=["ipc"],
+    )

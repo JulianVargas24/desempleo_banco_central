@@ -2,38 +2,36 @@ import pandas as pd
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
 
-engine = get_engine()
+def run_silver_pbi():
+    engine = get_engine()
+    query = """SELECT * FROM bronze.bronze_pbi"""
 
-query = """SELECT * FROM bronze.bronze_pbi"""
+    df = pd.read_sql(query, engine)
 
+    # Contar repetidos en la columna id
+    """df2 = df["id"].duplicated().sum()"""
 
-df = pd.read_sql(query, engine)
+    # Reemplazar valores nullos y vacios de fecha
+    df["fecha"] = (
+        df["fecha"]
+        .replace("", pd.NA)
+        .fillna("1900-01-01")
+    )
 
-# Contar repetidos en la columna id
-"""df2 = df["id"].duplicated().sum()"""
+    # Dejar solo 2 decimales a imacec
+    cols_to_round = ["pbi"]
+    df[cols_to_round] = df[cols_to_round].round(2)
 
-# Reemplazar valores nullos y vacios de fecha
-df["fecha"] = (
-    df["fecha"]
-    .replace("", pd.NA)
-    .fillna("1900-01-01")
-)
+    # Borrar datos existentes de la tabla
+    truncate_table(engine, "silver", "silver_pbi")
 
-# Dejar solo 2 decimales a imacec
-cols_to_round = ["pbi"]
-df[cols_to_round] = df[cols_to_round].round(2)
+    # Llevar los datos a silver
+    df.to_sql(
+        name="silver_pbi",
+        schema="silver",
+        con=engine,
+        if_exists="append",
+        index=False
+    )
 
-# Borrar datos existentes de la tabla
-truncate_table(engine, "silver", "silver_pbi")
-
-# Llevar los datos a silver
-df.to_sql(
-    name="silver_pbi",
-    schema="silver",
-    con=engine,
-    if_exists="append",
-    index=False
-)
-
-print(df)
-
+    print("✅ Silver pbi cargado correctamente")
