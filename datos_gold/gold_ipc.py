@@ -15,11 +15,10 @@ def run_gold_ipc():
     cursor = conn.cursor()
 
     # Funcion incremnetal esta en utils.funciones
-    def run_gold_ipc():
-        sync_gold(
-        silver_schema="silver",
-        silver_table="silver_ipc",
-        gold_schema="gold",
-        gold_table="gold_ipc",
-        columns=["ipc"],
+    sync_gold(
+    silver_schema="silver",
+    silver_table="silver_ipc",
+    gold_schema="gold",
+    gold_table="gold_ipc",
+    columns=["ipc"],
     )

@@ -40,7 +40,7 @@ def sync_gold(
     if silver_count == 0:
         raise ValueError(f"❌ {silver_table} está vacío. No se puede sincronizar.")
 
-    print(f"🔎 Filas en {silver_table}: {silver_count}")
+    print(f"\n🔎 Filas en {silver_table}: {silver_count}")
 
     # ======================================================
     # 2️⃣ INSERT NUEVOS
@@ -64,7 +64,6 @@ def sync_gold(
     """
 
     cursor.execute(insert_sql)
-    print("✅ INSERT nuevos completado.")
 
     # ======================================================
     # 3️⃣ UPDATE SI CAMBIA
@@ -91,7 +90,6 @@ def sync_gold(
     """
 
     cursor.execute(update_sql)
-    print("🔄 UPDATE cambios completado.")
 
     # ======================================================
     # 4️⃣ DELETE OBSOLETOS
@@ -107,7 +105,6 @@ def sync_gold(
     """
 
     cursor.execute(delete_sql)
-    print("🗑️ DELETE obsoletos completado.")
 
     # ======================================================
     # 5️⃣ COMMIT
@@ -126,12 +123,10 @@ def sync_gold(
 
     result = cursor.fetchone()
 
-    print("\n📊 Estado final GOLD:")
+    print("📊 Estado final GOLD:")
     print(f"Total filas: {result[0]}")
     print(f"Desde: {result[1]}")
     print(f"Hasta: {result[2]}")
 
     cursor.close()
     conn.close()
-
-    print("\n🚀 Sincronización completada correctamente.")

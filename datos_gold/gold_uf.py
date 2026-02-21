@@ -15,11 +15,10 @@ def run_gold_uf():
     cursor = conn.cursor()
 
     # Funcion incremnetal esta en utils.funciones
-    def run_gold_uf():
-        sync_gold(
-        silver_schema="silver",
-        silver_table="silver_uf",
-        gold_schema="gold",
-        gold_table="gold_uf",
-        columns=["uf"],
+    sync_gold(
+    silver_schema="silver",
+    silver_table="silver_uf",
+    gold_schema="gold",
+    gold_table="gold_uf",
+    columns=["uf"],
     )

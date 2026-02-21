@@ -15,11 +15,10 @@ def run_gold_imacec():
     cursor = conn.cursor()
 
     # Funcion incremnetal esta en utils.funciones
-    def run_gold_imacec():
-        sync_gold(
-        silver_schema="silver",
-        silver_table="silver_imacec",
-        gold_schema="gold",
-        gold_table="gold_imacec",
-        columns=["imacec"],
+    sync_gold(
+    silver_schema="silver",
+    silver_table="silver_imacec",
+    gold_schema="gold",
+    gold_table="gold_imacec",
+    columns=["imacec"],
     )

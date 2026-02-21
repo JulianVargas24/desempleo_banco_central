@@ -6,6 +6,7 @@ def main():
     run_bronze()
     run_silver()
     run_gold()
+    print("\n*** PIPELINE COMPLETADO CON ÉXITO ***")
 
 if __name__ == "__main__":
     main()

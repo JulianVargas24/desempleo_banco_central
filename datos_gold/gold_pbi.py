@@ -2,6 +2,7 @@ from utils.conexion_postgre import get_engine
 from utils.funciones import sync_gold
 
 def run_gold_pbi():
+    
     # CONFIG
     SILVER_SCHEMA = "silver"
     SILVER_TABLE = "silver_pbi"
@@ -15,11 +16,10 @@ def run_gold_pbi():
     cursor = conn.cursor()
 
     # Funcion incremnetal esta en utils.funciones
-    def run_gold_pbi():
-        sync_gold(
-        silver_schema="silver",
-        silver_table="silver_pbi",
-        gold_schema="gold",
-        gold_table="gold_pbi",
-        columns=["pbi"],
+    sync_gold(
+    silver_schema="silver",
+    silver_table="silver_pbi",
+    gold_schema="gold",
+    gold_table="gold_pbi",
+    columns=["pbi"],
     )
