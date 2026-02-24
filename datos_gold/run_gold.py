@@ -6,6 +6,7 @@ from datos_gold.gold_ipc import run_gold_ipc
 from datos_gold.gold_pbi import run_gold_pbi
 from datos_gold.gold_uf import run_gold_uf
 
+
 def run_gold():
     run_gold_deso_na()
     run_gold_deso_re()
@@ -16,6 +17,7 @@ def run_gold():
     run_gold_uf()
 
     print("*** CARGA DE GOLD COMPLETADA ***")
+
 
 if __name__ == "__main__":
     run_gold()

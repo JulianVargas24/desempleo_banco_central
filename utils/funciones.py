@@ -1,11 +1,13 @@
 from sqlalchemy import text
 from utils.conexion_postgre import get_engine
 
+
 # FUNCION BORRA TODO LO QUE HAY EN LA TABLA en sql
 def truncate_table(engine, schema, tabla):
     query = f"TRUNCATE TABLE {schema}.{tabla} RESTART IDENTITY"
     with engine.begin() as conn:
         conn.execute(text(query))
+
 
 # FUNCION HACE EL TRABAJO INCREMENTAL, BORRA Y EDITA
 def sync_gold(
@@ -69,9 +71,7 @@ def sync_gold(
     # 3️⃣ UPDATE SI CAMBIA
     # ======================================================
 
-    set_clause = ",\n        ".join(
-        [f"{col} = s.{col}" for col in columns]
-    )
+    set_clause = ",\n        ".join([f"{col} = s.{col}" for col in columns])
 
     distinct_conditions = " OR\n        ".join(
         [f"g.{col} IS DISTINCT FROM s.{col}" for col in columns]

@@ -16,6 +16,6 @@ tzdata==2025.3
 urllib3==2.6.3
 mypy
 black 
-flake8 
+ruff 
 pytest 
 python-dotenv

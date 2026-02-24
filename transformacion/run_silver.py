@@ -6,6 +6,7 @@ from transformacion.tr_ipc import run_silver_ipc
 from transformacion.tr_pbi import run_silver_pbi
 from transformacion.tr_uf import run_silver_uf
 
+
 def run_silver():
     run_silver_deso_na()
     run_silver_deso_re()
@@ -16,6 +17,7 @@ def run_silver():
     run_silver_uf()
 
     print("***CARGA DE SILVER COMPLETADA***")
+
 
 if __name__ == "__main__":
     run_silver()

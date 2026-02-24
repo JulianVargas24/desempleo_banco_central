@@ -2,6 +2,7 @@ import pandas as pd
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
 
+
 def run_silver_deso_na():
 
     engine = get_engine()
@@ -10,11 +11,7 @@ def run_silver_deso_na():
     df = pd.read_sql(query, engine)
 
     # Reemplazar valores nulos y vacíos
-    df["fecha"] = (
-        df["fecha"]
-        .replace("", pd.NA)
-        .fillna("1900-01-01")
-    )
+    df["fecha"] = df["fecha"].replace("", pd.NA).fillna("1900-01-01")
 
     # Redondear
     df["desocupacion_nacional"] = df["desocupacion_nacional"].round(2)
@@ -28,7 +25,7 @@ def run_silver_deso_na():
         schema="silver",
         con=engine,
         if_exists="append",
-        index=False
+        index=False,
     )
 
     print("✅ Silver desocupación nacional cargado correctamente")

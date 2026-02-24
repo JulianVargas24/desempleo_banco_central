@@ -2,6 +2,7 @@ import bcchapi
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
 
+
 def run_bronze_uf():
     # Incluyendo credenciales explícitamente
     siete = bcchapi.Siete(file="credenciales.txt")
@@ -13,7 +14,7 @@ def run_bronze_uf():
         nombres=["uf"],
         desde="2015-01-01",
         frecuencia="D",
-        observado={"uf":"last"}
+        observado={"uf": "last"},
     )
 
     df = df.reset_index()
@@ -27,11 +28,7 @@ def run_bronze_uf():
 
     # Ingestar a postgresql
     df.to_sql(
-        name="bronze_uf",
-        schema="bronze",
-        con=engine,
-        if_exists="append",
-        index=False
+        name="bronze_uf", schema="bronze", con=engine, if_exists="append", index=False
     )
 
     print("✅ Bronze uf cargado correctamente")

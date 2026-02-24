@@ -2,6 +2,7 @@ import bcchapi
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
 
+
 def run_bronze_deso_na():
 
     # Consumo API Banco Central
@@ -13,7 +14,7 @@ def run_bronze_deso_na():
         nombres=["desocupacion_nacional"],
         desde="2015-01-01",
         frecuencia="ME",
-        observado={"desocupacion_nacional": "last"}
+        observado={"desocupacion_nacional": "last"},
     )
 
     # Reset index
@@ -32,7 +33,7 @@ def run_bronze_deso_na():
         schema="bronze",
         con=engine,
         if_exists="append",
-        index=False
+        index=False,
     )
 
     print("✅ Bronze desocupación nacional cargado correctamente")

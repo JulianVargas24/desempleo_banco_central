@@ -1,6 +1,7 @@
 from sqlalchemy import create_engine
 import os
 
+
 def get_engine():
     return create_engine(
         f"postgresql+psycopg2://"

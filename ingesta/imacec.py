@@ -2,6 +2,7 @@ import bcchapi
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
 
+
 def run_bronze_imacec():
     # Incluyendo credenciales explícitamente
     siete = bcchapi.Siete(file="credenciales.txt")
@@ -12,7 +13,7 @@ def run_bronze_imacec():
         nombres=["imacec"],
         desde="2015-01-01",
         frecuencia="ME",
-        observado={"imacec":"last"}
+        observado={"imacec": "last"},
     )
 
     # Reset index para tener fecha como columna
@@ -31,7 +32,7 @@ def run_bronze_imacec():
         schema="bronze",
         con=engine,
         if_exists="append",
-        index=False
+        index=False,
     )
 
     print("✅ Bronze imacec cargado correctamente")

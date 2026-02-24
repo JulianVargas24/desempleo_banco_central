@@ -2,8 +2,9 @@ import pandas as pd
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
 
+
 def run_silver_deso_re():
-    
+
     engine = get_engine()
     query = """SELECT * FROM bronze.bronze_desocupacion_regional"""
 
@@ -13,19 +14,27 @@ def run_silver_deso_re():
     """df2 = df["id"].duplicated().sum()"""
 
     # Reemplazar valores nullos y vacios de fecha
-    df["fecha"] = (
-        df["fecha"]
-        .replace("", pd.NA)
-        .fillna("1900-01-01")
-    )
+    df["fecha"] = df["fecha"].replace("", pd.NA).fillna("1900-01-01")
 
     # Dejar solo 2 decimales a desocupacion_nacional
-    cols_to_round = ["arica_parinacota", "tarapaca", "antofagasta", 
-                    "atacama", "coquimbo", "valparaiso", 
-                    "metropolitana", "ohiggins", "maule", 
-                    "nuble", "bio_bio", "araucania", 
-                    "los_rios", "los_lagos", "aysen", 
-                    "magallanes"]
+    cols_to_round = [
+        "arica_parinacota",
+        "tarapaca",
+        "antofagasta",
+        "atacama",
+        "coquimbo",
+        "valparaiso",
+        "metropolitana",
+        "ohiggins",
+        "maule",
+        "nuble",
+        "bio_bio",
+        "araucania",
+        "los_rios",
+        "los_lagos",
+        "aysen",
+        "magallanes",
+    ]
 
     df[cols_to_round] = df[cols_to_round].round(2)
 
@@ -38,7 +47,7 @@ def run_silver_deso_re():
         schema="silver",
         con=engine,
         if_exists="append",
-        index=False
+        index=False,
     )
 
     print("✅ Silver desocupación regional cargado correctamente")
