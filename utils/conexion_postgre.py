@@ -1,13 +1,11 @@
-from sqlalchemy import create_engine
 import os
+from sqlalchemy import create_engine
 
 
 def get_engine():
-    return create_engine(
-        f"postgresql+psycopg2://"
-        f"{os.getenv('DB_USER')}:"
-        f"{os.getenv('DB_PASSWORD')}@"
-        f"{os.getenv('DB_HOST')}:"
-        f"{os.getenv('DB_PORT', '5432')}/"
-        f"{os.getenv('DB_NAME')}?sslmode=require"
-    )
+    database_url = os.getenv("SECRET_DESEMPLEO")
+
+    if not database_url:
+        raise ValueError("SECRET_DESEMPLEO no está configurada")
+
+    return create_engine(database_url)
