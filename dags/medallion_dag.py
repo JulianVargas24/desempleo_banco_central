@@ -11,28 +11,18 @@ from ingesta.run_bronze import run_bronze
 from transformacion.run_silver import run_silver
 from datos_gold.run_gold import run_gold
 
-
 with DAG(
     dag_id="bc_medallion_pipeline",
     start_date=datetime(2024, 1, 1),
     schedule="@daily",
     catchup=False,
-    tags=["banco_central", "medallion"]
+    tags=["banco_central", "medallion"],
 ) as dag:
 
-    bronze_task = PythonOperator(
-        task_id="bronze",
-        python_callable=run_bronze
-    )
+    bronze_task = PythonOperator(task_id="bronze", python_callable=run_bronze)
 
-    silver_task = PythonOperator(
-        task_id="silver",
-        python_callable=run_silver
-    )
+    silver_task = PythonOperator(task_id="silver", python_callable=run_silver)
 
-    gold_task = PythonOperator(
-        task_id="gold",
-        python_callable=run_gold
-    )
+    gold_task = PythonOperator(task_id="gold", python_callable=run_gold)
 
     bronze_task >> silver_task >> gold_task
