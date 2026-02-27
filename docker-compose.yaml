@@ -14,6 +14,7 @@ x-airflow-common:
     AIRFLOW__CORE__LOAD_EXAMPLES: 'true'
     AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
+    AIRFLOW_CONN_NEON_POSTGRES: postgresql://neondb_owner:npg_LV4rYZxT7pPg@ep-empty-tooth-aa15thai.westus3.azure.neon.tech/neondb?sslmode=require&channel_binding=require
   volumes:
     - ./:/opt/airflow/project
     - ./dags:/opt/airflow/dags

@@ -5,7 +5,7 @@ from utils.funciones import truncate_table
 
 def run_bronze_deso_re():
     # Incluyendo credenciales explícitamente
-    siete = bcchapi.Siete(file="credenciales.txt")
+    siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
 
     series_code = [
         "F049.DES.TAS.INE9.25.M",
@@ -47,7 +47,7 @@ def run_bronze_deso_re():
             "magallanes",
         ],
         desde="2015-01-01",
-        frecuencia="ME",
+        frecuencia="M",
         observado={
             "arica_parinacota": "last",
             "tarapaca": "last",

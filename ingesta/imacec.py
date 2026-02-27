@@ -5,14 +5,14 @@ from utils.funciones import truncate_table
 
 def run_bronze_imacec():
     # Incluyendo credenciales explícitamente
-    siete = bcchapi.Siete(file="credenciales.txt")
+    siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
     series_code = "F032.IMC.IND.Z.Z.EP18.Z.Z.0.M"
 
     df = siete.cuadro(
         series=[series_code],
         nombres=["imacec"],
         desde="2015-01-01",
-        frecuencia="ME",
+        frecuencia="M",
         observado={"imacec": "last"},
     )
 

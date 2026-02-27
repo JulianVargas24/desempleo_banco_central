@@ -5,7 +5,7 @@ from utils.funciones import truncate_table
 
 def run_bronze_fuerza_trabajo():
     # Incluyendo credenciales explícitamente
-    siete = bcchapi.Siete(file="credenciales.txt")
+    siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
 
     series_code = [
         "F049.FTR.PMT.INE9.01.M",
@@ -17,7 +17,7 @@ def run_bronze_fuerza_trabajo():
         series=series_code,
         nombres=["total", "mujeres", "hombres"],
         desde="2015-01-01",
-        frecuencia="ME",
+        frecuencia="M",
         observado={"total": "last", "mujeres": "last", "hombres": "last"},
     )
 

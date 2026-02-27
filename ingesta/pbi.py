@@ -5,7 +5,7 @@ from utils.funciones import truncate_table
 
 def run_bronze_pbi():
     # Incluyendo credenciales explícitamente
-    siete = bcchapi.Siete(file="credenciales.txt")
+    siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
 
     series_code = "F032.PIB.FLU.R.CLP.EP18.Z.Z.0.T"
 
@@ -13,7 +13,7 @@ def run_bronze_pbi():
         series=[series_code],
         nombres=["pbi"],
         desde="2015-01-01",
-        frecuencia="QE",
+        frecuencia="Q",
         observado={"pbi": "last"},
     )
 

@@ -6,14 +6,14 @@ from utils.funciones import truncate_table
 def run_bronze_deso_na():
 
     # Consumo API Banco Central
-    siete = bcchapi.Siete(file="credenciales.txt")
+    siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
     series_code = "F049.DES.TAS.INE9.10.M"
 
     df = siete.cuadro(
         series=[series_code],
         nombres=["desocupacion_nacional"],
         desde="2015-01-01",
-        frecuencia="ME",
+        frecuencia="M",
         observado={"desocupacion_nacional": "last"},
     )
 
@@ -37,3 +37,6 @@ def run_bronze_deso_na():
     )
 
     print("✅ Bronze desocupación nacional cargado correctamente")
+
+
+run_bronze_deso_na()

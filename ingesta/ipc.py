@@ -5,7 +5,7 @@ from utils.funciones import truncate_table
 
 def run_bronze_ipc():
     # Incluyendo credenciales explícitamente
-    siete = bcchapi.Siete(file="credenciales.txt")
+    siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
 
     series_code = "F074.IPC.VAR.Z.Z.C.M"
 
@@ -13,7 +13,7 @@ def run_bronze_ipc():
         series=[series_code],
         nombres=["ipc"],
         desde="2015-01-01",
-        frecuencia="ME",
+        frecuencia="M",
         observado={"ipc": "last"},
     )
 

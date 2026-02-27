@@ -5,7 +5,7 @@ from utils.funciones import truncate_table
 
 def run_bronze_uf():
     # Incluyendo credenciales explícitamente
-    siete = bcchapi.Siete(file="credenciales.txt")
+    siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
 
     series_code = "F073.UFF.PRE.Z.D"
 

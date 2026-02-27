@@ -45,51 +45,26 @@ def sync_gold(
     print(f"\n🔎 Filas en {silver_table}: {silver_count}")
 
     # ======================================================
-    # 2️⃣ INSERT NUEVOS
+    # UPSERT PROFESIONAL (INSERT + UPDATE en uno solo)
     # ======================================================
 
     col_list = ", ".join(columns)
-    select_cols = ", ".join([f"s.{col}" for col in columns])
+    update_set = ", ".join([f"{col} = EXCLUDED.{col}" for col in columns])
 
-    insert_sql = f"""
+    upsert_sql = f"""
         INSERT INTO {gold_schema}.{gold_table}
             (fecha, {col_list})
         SELECT
             s.fecha,
-            {select_cols}
+            {col_list}
         FROM {silver_schema}.{silver_table} s
-        WHERE NOT EXISTS (
-            SELECT 1
-            FROM {gold_schema}.{gold_table} g
-            WHERE g.fecha = s.fecha
-        );
+        ON CONFLICT (fecha)
+        DO UPDATE SET
+            {update_set},
+            fecha_carga = CURRENT_TIMESTAMP;
     """
 
-    cursor.execute(insert_sql)
-
-    # ======================================================
-    # 3️⃣ UPDATE SI CAMBIA
-    # ======================================================
-
-    set_clause = ",\n        ".join([f"{col} = s.{col}" for col in columns])
-
-    distinct_conditions = " OR\n        ".join(
-        [f"g.{col} IS DISTINCT FROM s.{col}" for col in columns]
-    )
-
-    update_sql = f"""
-        UPDATE {gold_schema}.{gold_table} g
-        SET
-            {set_clause},
-            fecha_carga = CURRENT_TIMESTAMP
-        FROM {silver_schema}.{silver_table} s
-        WHERE g.fecha = s.fecha
-        AND (
-            {distinct_conditions}
-        );
-    """
-
-    cursor.execute(update_sql)
+    cursor.execute(upsert_sql)
 
     # ======================================================
     # 4️⃣ DELETE OBSOLETOS
