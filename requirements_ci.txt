@@ -3,3 +3,4 @@ ruff
 pytest
 mypy
 sqlalchemy
+psycopg2
