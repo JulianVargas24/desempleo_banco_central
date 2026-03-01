@@ -5,6 +5,9 @@ from transformacion.tr_imacec import run_silver_imacec
 from transformacion.tr_ipc import run_silver_ipc
 from transformacion.tr_pbi import run_silver_pbi
 from transformacion.tr_uf import run_silver_uf
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def run_silver():
@@ -16,7 +19,7 @@ def run_silver():
     run_silver_pbi()
     run_silver_uf()
 
-    print("***CARGA DE SILVER COMPLETADA***")
+    logger.info("***CARGA DE SILVER COMPLETADA***")
 
 
 if __name__ == "__main__":

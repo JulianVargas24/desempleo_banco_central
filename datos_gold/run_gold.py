@@ -5,6 +5,9 @@ from datos_gold.gold_imacec import run_gold_imacec
 from datos_gold.gold_ipc import run_gold_ipc
 from datos_gold.gold_pbi import run_gold_pbi
 from datos_gold.gold_uf import run_gold_uf
+import logging
+
+logger = logging.getLogger(__name__)
 
 
 def run_gold():
@@ -16,7 +19,7 @@ def run_gold():
     run_gold_pbi()
     run_gold_uf()
 
-    print("*** CARGA DE GOLD COMPLETADA ***")
+    logger.info("*** CARGA DE GOLD COMPLETADA ***")
 
 
 if __name__ == "__main__":
