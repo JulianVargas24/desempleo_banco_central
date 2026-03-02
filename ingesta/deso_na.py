@@ -1,6 +1,8 @@
 import bcchapi
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
+import logging
+logger = logging.getLogger(__name__)
 
 
 def run_bronze_deso_na():
@@ -36,7 +38,4 @@ def run_bronze_deso_na():
         index=False,
     )
 
-    print("✅ Bronze desocupación nacional cargado correctamente")
-
-
-run_bronze_deso_na()
+    logger.info("✅ Bronze desocupación nacional cargado correctamente")
