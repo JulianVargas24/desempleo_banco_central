@@ -2,6 +2,7 @@ import bcchapi
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
 import logging
+
 logger = logging.getLogger(__name__)
 
 
