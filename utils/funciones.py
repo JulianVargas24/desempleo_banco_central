@@ -24,8 +24,6 @@ def sync_gold(
     - Delete obsoletos
     """
 
-    from utils.conexion_postgre import get_engine
-
     engine = get_engine()
     conn = engine.raw_connection()
     cursor = conn.cursor()
