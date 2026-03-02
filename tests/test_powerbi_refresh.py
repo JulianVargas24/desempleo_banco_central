@@ -1,9 +1,5 @@
 import os
 import requests
-from dotenv import load_dotenv
-
-# Cargar variables del .env
-load_dotenv()
 
 tenant_id = os.getenv("PBI_TENANT_ID")
 client_id = os.getenv("PBI_CLIENT_ID")
