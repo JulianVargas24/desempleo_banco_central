@@ -15,7 +15,7 @@ def run_silver_imacec():
     # Reemplazar valores nullos y vacios de fecha
     df["fecha"] = df["fecha"].replace("", pd.NA).fillna("1900-01-01")
 
-    # Dejar solo 2 decimales a imacec
+    # Redondear
     cols_to_round = ["imacec"]
 
     df[cols_to_round] = df[cols_to_round].round(2)

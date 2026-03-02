@@ -6,7 +6,7 @@ import sys
 
 sys.path.append("/opt/airflow/project")
 
-# Imports correctos (corrige pbi)
+# Imports
 from ingesta.deso_na import run_bronze_deso_na
 from ingesta.deso_re import run_bronze_deso_re
 from ingesta.fuerza_trabajo import run_bronze_fuerza_trabajo
@@ -31,7 +31,7 @@ from datos_gold.gold_pbi import run_gold_pbi
 from datos_gold.gold_imacec import run_gold_imacec
 from datos_gold.gold_uf import run_gold_uf
 
-from utils.powerbi_refresh import refresh_powerbi_dataset
+from power_bi.powerbi_refresh import refresh_powerbi_dataset
 
 default_args = {
     "owner": "julian",

@@ -4,8 +4,9 @@ from utils.funciones import truncate_table
 
 
 def run_bronze_imacec():
-    # Incluyendo credenciales explícitamente
+    # Incluir credenciales explícitamente
     siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
+
     series_code = "F032.IMC.IND.Z.Z.EP18.Z.Z.0.M"
 
     df = siete.cuadro(

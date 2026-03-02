@@ -4,7 +4,7 @@ from utils.funciones import truncate_table
 
 
 def run_bronze_ipc():
-    # Incluyendo credenciales explícitamente
+    # Incluir credenciales explícitamente
     siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
 
     series_code = "F074.IPC.VAR.Z.Z.C.M"

@@ -16,7 +16,7 @@ def run_silver_deso_re():
     # Reemplazar valores nullos y vacios de fecha
     df["fecha"] = df["fecha"].replace("", pd.NA).fillna("1900-01-01")
 
-    # Dejar solo 2 decimales a desocupacion_nacional
+    # Redondear
     cols_to_round = [
         "arica_parinacota",
         "tarapaca",

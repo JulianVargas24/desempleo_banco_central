@@ -1,15 +1,12 @@
 import bcchapi
 from utils.conexion_postgre import get_engine
 from utils.funciones import truncate_table
-import logging
-
-logger = logging.getLogger(__name__)
 
 
 def run_bronze_deso_na():
-
     # Consumo API Banco Central
     siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
+
     series_code = "F049.DES.TAS.INE9.10.M"
 
     df = siete.cuadro(
@@ -39,4 +36,4 @@ def run_bronze_deso_na():
         index=False,
     )
 
-    logger.info("✅ Bronze desocupación nacional cargado correctamente")
+    print("✅ Bronze desocupación nacional cargado correctamente")

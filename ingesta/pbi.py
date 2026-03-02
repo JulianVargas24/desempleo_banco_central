@@ -4,7 +4,7 @@ from utils.funciones import truncate_table
 
 
 def run_bronze_pbi():
-    # Incluyendo credenciales explícitamente
+    # Incluir credenciales explícitamente
     siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
 
     series_code = "F032.PIB.FLU.R.CLP.EP18.Z.Z.0.T"
