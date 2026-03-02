@@ -4,3 +4,4 @@ pytest
 mypy
 sqlalchemy
 psycopg2
+requests
