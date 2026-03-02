@@ -31,6 +31,8 @@ from datos_gold.gold_pbi import run_gold_pbi
 from datos_gold.gold_imacec import run_gold_imacec
 from datos_gold.gold_uf import run_gold_uf
 
+from utils.powerbi_refresh import refresh_powerbi_dataset
+
 default_args = {
     "owner": "julian",
     "depends_on_past": False,
@@ -161,11 +163,12 @@ with DAG(
             python_callable=run_gold_uf,
         )
 
-    # ================= DEPENDENCIAS POR PIPELINE =================
-    bronze_deso_na >> silver_deso_na >> gold_deso_na
-    bronze_deso_re >> silver_deso_re >> gold_deso_re
-    bronze_fuerza_trabajo >> silver_fuerza_trabajo >> gold_fuerza_trabajo
-    bronze_imacec >> silver_imacec >> gold_imacec
-    bronze_ipc >> silver_ipc >> gold_ipc
-    bronze_pbi >> silver_pbi >> gold_pbi
-    bronze_uf >> silver_uf >> gold_uf
+    # ================= POWER BI REFRESH =================
+    with TaskGroup("power_bi_layer") as power_bi_group:
+        refresh_powerbi = PythonOperator(
+            task_id="refresh_powerbi",
+            python_callable=refresh_powerbi_dataset,
+        )
+
+    # ================= PIPELINE =================
+    bronze_group >> silver_group >> gold_group >> power_bi_group

@@ -18,11 +18,13 @@ def sync_gold(
     columns: list[str],
 ):
     """
-    Sincroniza tabla Silver → Gold con lógica incremental:
+    Sincroniza tabla Silver → Gold con lógica incremental REAL:
     - Insert nuevos
-    - Update solo si cambia
+    - Update solo si cambian valores
     - Delete obsoletos
     """
+
+    from utils.conexion_postgre import get_engine
 
     engine = get_engine()
     conn = engine.raw_connection()
@@ -45,29 +47,36 @@ def sync_gold(
     print(f"\n🔎 Filas en {silver_table}: {silver_count}")
 
     # ======================================================
-    # UPSERT PROFESIONAL (INSERT + UPDATE en uno solo)
+    # 2️⃣ UPSERT INTELIGENTE (INSERT + UPDATE CONDICIONAL)
     # ======================================================
 
     col_list = ", ".join(columns)
+    select_cols = ", ".join([f"s.{col}" for col in columns])
     update_set = ", ".join([f"{col} = EXCLUDED.{col}" for col in columns])
+
+    distinct_conditions = " OR ".join(
+        [f"{gold_table}.{col} IS DISTINCT FROM EXCLUDED.{col}" for col in columns]
+    )
 
     upsert_sql = f"""
         INSERT INTO {gold_schema}.{gold_table}
             (fecha, {col_list})
         SELECT
             s.fecha,
-            {col_list}
+            {select_cols}
         FROM {silver_schema}.{silver_table} s
         ON CONFLICT (fecha)
         DO UPDATE SET
             {update_set},
-            fecha_carga = CURRENT_TIMESTAMP;
+            fecha_carga = CURRENT_TIMESTAMP
+        WHERE
+            {distinct_conditions};
     """
 
     cursor.execute(upsert_sql)
 
     # ======================================================
-    # 4️⃣ DELETE OBSOLETOS
+    # 3️⃣ DELETE OBSOLETOS
     # ======================================================
 
     delete_sql = f"""
@@ -82,13 +91,13 @@ def sync_gold(
     cursor.execute(delete_sql)
 
     # ======================================================
-    # 5️⃣ COMMIT
+    # 4️⃣ COMMIT
     # ======================================================
 
     conn.commit()
 
     # ======================================================
-    # 6️⃣ VALIDACIÓN FINAL
+    # 5️⃣ VALIDACIÓN FINAL
     # ======================================================
 
     cursor.execute(f"""

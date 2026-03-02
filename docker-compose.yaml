@@ -15,6 +15,11 @@ x-airflow-common:
     AIRFLOW__API__AUTH_BACKENDS: airflow.api.auth.backend.basic_auth,airflow.api.auth.backend.session
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     AIRFLOW_CONN_NEON_POSTGRES: ${AIRFLOW_CONN_NEON_POSTGRES}
+    PBI_TENANT_ID: ${PBI_TENANT_ID}
+    PBI_CLIENT_ID: ${PBI_CLIENT_ID}
+    PBI_CLIENT_SECRET: ${PBI_CLIENT_SECRET}
+    PBI_GROUP_ID: ${PBI_GROUP_ID}
+    PBI_DATASET_ID: ${PBI_DATASET_ID}
   volumes:
     - ./:/opt/airflow/project
     - ./dags:/opt/airflow/dags
