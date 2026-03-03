@@ -15,9 +15,11 @@ def run_silver_pbi():
     # Reemplazar valores nullos y vacios de fecha
     df["fecha"] = df["fecha"].replace("", pd.NA).fillna("1900-01-01")
 
-    # Redondear
-    cols_to_round = ["pbi"]
-    df[cols_to_round] = df[cols_to_round].round(2)
+    # Redondear y poner nulos en 0
+    cols = ["pbi"]
+
+    df[cols] = df[cols].round(2)
+    df[cols] = df[cols].fillna(0)
 
     # Borrar datos existentes de la tabla
     truncate_table(engine, "silver", "silver_pbi")

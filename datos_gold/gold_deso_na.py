@@ -9,5 +9,9 @@ def run_gold_deso_na():
         silver_table="silver_desocupacion_nacional",
         gold_schema="gold",
         gold_table="gold_desocupacion_nacional",
-        columns=["desocupacion_nacional"],
+        columns=[
+            "desocupacion_nacional",
+            "desocupacion_mujeres",
+            "desocupacion_hombres",
+        ],
     )

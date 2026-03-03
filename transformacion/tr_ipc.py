@@ -15,6 +15,12 @@ def run_silver_ipc():
     # Reemplazar valores nullos y vacios de fecha
     df["fecha"] = df["fecha"].replace("", pd.NA).fillna("1900-01-01")
 
+    # Redondear y poner nulos en 0
+    cols = ["ipc"]
+
+    df[cols] = df[cols].round(2)
+    df[cols] = df[cols].fillna(0)
+
     # Borrar datos existentes de la tabla
     truncate_table(engine, "silver", "silver_ipc")
 

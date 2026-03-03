@@ -13,8 +13,11 @@ def run_silver_deso_na():
     # Reemplazar valores nulos y vacíos
     df["fecha"] = df["fecha"].replace("", pd.NA).fillna("1900-01-01")
 
-    # Redondear
-    df["desocupacion_nacional"] = df["desocupacion_nacional"].round(2)
+    # Redondear y poner nulos a 0
+    cols = ["desocupacion_nacional", "desocupacion_mujeres", "desocupacion_hombres"]
+
+    df[cols] = df[cols].round(2)
+    df[cols] = df[cols].fillna(0)
 
     # Truncate Silver
     truncate_table(engine, "silver", "silver_desocupacion_nacional")

@@ -7,19 +7,36 @@ def run_bronze_deso_na():
     # Consumo API Banco Central
     siete = bcchapi.Siete(file="/opt/airflow/project/credenciales.txt")
 
-    series_code = "F049.DES.TAS.INE9.10.M"
+    series_code = [
+        "F049.DES.TAS.INE9.10.M",
+        "F049.DES.PMT.INE.03.M",
+        "F049.DES.PMT.INE.02.M",
+    ]
 
     df = siete.cuadro(
-        series=[series_code],
-        nombres=["desocupacion_nacional"],
+        series=series_code,
+        nombres=[
+            "desocupacion_nacional",
+            "desocupacion_mujeres",
+            "desocupacion_hombres",
+        ],
         desde="2015-01-01",
         frecuencia="M",
-        observado={"desocupacion_nacional": "last"},
+        observado={
+            "desocupacion_nacional": "last",
+            "desocupacion_mujeres": "last",
+            "desocupacion_hombres": "last",
+        },
     )
 
     # Reset index
     df = df.reset_index()
-    df.columns = ["fecha", "desocupacion_nacional"]
+    df.columns = [
+        "fecha",
+        "desocupacion_nacional",
+        "desocupacion_mujeres",
+        "desocupacion_hombres",
+    ]
 
     # Conexión
     engine = get_engine()
