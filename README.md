@@ -237,23 +237,8 @@ Configurar variables:
 
 El pipeline se ejecuta automáticamente mediante **Apache Airflow**.
 
-Horario
-
-
-06:00 AM diario
-
-
-Flujo
-
-
-Bronze ingestion
-↓
-Silver transformation
-↓
-Gold analytics layer
-↓
-Power BI dataset refresh
-
+- Horario: 06:00 AM diario
+- Flujo: Bronze ingestion → Silver transformation → Gold analytics layer → Power BI dataset refresh
 
 > Una vez finalizada la capa **Gold**, el pipeline ejecuta un **refresh automático del dataset en Power BI**.
 
