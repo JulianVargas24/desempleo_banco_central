@@ -77,7 +77,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Contexto histórico del mercado laboral  
 - Comparación pandemia vs post-pandemia  
 
-![Dashboard 1](./images/dashboard_general.png)
+<img width="2244" height="1261" alt="{300A64DC-4E0F-4AFE-8931-0EF2A382BBA7}" src="https://github.com/user-attachments/assets/5cac7f39-7b7b-4a9a-ac3e-2d7c18cdab41" />
+
 
 ---
 
@@ -94,7 +95,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Identificación de desigualdades persistentes  
 - Evaluación de convergencia entre tasas laborales  
 
-![Dashboard 2](./images/dashboard_genero.png)
+<img width="2254" height="1253" alt="{D516FE2C-88F6-4D90-87A7-089AAB10EBE6}" src="https://github.com/user-attachments/assets/d95dc1c0-1cfb-4a8b-b778-0cc9504a766b" />
+
 
 ---
 
@@ -111,7 +113,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Interpretación macroeconómica del desempleo  
 - Identificación de relaciones económicas relevantes  
 
-![Dashboard 3](./images/dashboard_macro.png)
+<img width="2245" height="1255" alt="{8C30BF1E-2A04-4B7F-8633-4C70CB2E5CB7}" src="https://github.com/user-attachments/assets/721c681e-4b57-475e-a223-be661a4a707a" />
+
 
 ---
 
@@ -128,7 +131,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Identificación de heterogeneidad territorial  
 - Apoyo a análisis regional del mercado laboral  
 
-![Dashboard 4](./images/dashboard_regional.png)
+<img width="2250" height="1260" alt="{7BB5E94A-0A78-439C-8755-59143A705B86}" src="https://github.com/user-attachments/assets/0a8e0e24-c592-4a5d-9a45-2cc10b92ce75" />
+
 
 ---
 
@@ -256,35 +260,6 @@ El pipeline de **CI**:
 - ejecuta validaciones del proyecto
 
 > Esto asegura que el pipeline sea **reproducible y estable antes del despliegue**.
-
----
-
-# 10) Estructura del repo
-
-
-project
-│
-├─ dags/
-│ bc_medallion_pipeline.py
-│
-├─ src/
-│ ingesta/
-│ transformacion/
-│ datos_gold/
-│
-├─ utils/
-│ conexion_postgre.py
-│ funciones.py
-│
-├─ dashboards/
-│ desempleo_chile.pbix
-│
-├─ images/
-│
-├─ requirements.txt
-├─ docker-compose.yml
-└─ README.md
-
 
 ---
 
