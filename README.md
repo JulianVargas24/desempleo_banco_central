@@ -186,50 +186,49 @@ Aplicaciones:
 ### 1) Clonar el repo
 
 
-git clone https://github.com/
-<tu-usuario>/<tu-repo>.git
-cd <tu-repo>
+- git clone https://github.com/<tu-usuario>/<tu-repo>.git
+- cd <tu-repo>
 
 
 ### 2) Crear entorno virtual
 
 
-python -m venv .venv
-..venv\Scripts\activate
+- python -m venv .venv
+- ..venv\Scripts\activate
 
 
 ### 3) Instalar dependencias
 
 
-pip install -r requirements.txt
+- pip install -r requirements.txt
 
 
 ### 4) Crear archivo `.env`
 
 
-copy .env.example .env
+- copy .env.example .env
 
 
-Configurar variables
+Configurar variables:
 
 
-DATABASE_URL=
-POWERBI_CLIENT_ID=
-POWERBI_CLIENT_SECRET=
-POWERBI_TENANT_ID=
-POWERBI_DATASET_ID=
+- DATABASE_URL=
+- POWERBI_CLIENT_ID=
+- POWERBI_CLIENT_SECRET=
+- POWERBI_TENANT_ID=
+- POWERBI_DATASET_ID=
 
 
 ### 5) Levantar Airflow con Docker
 
 
-docker compose up -d
+- docker compose up -d
 
 
 ### 6) Ejecutar DAG manual
 
 
-airflow dags trigger bc_medallion_pipeline
+- airflow dags trigger bc_medallion_pipeline
 
 
 ---
