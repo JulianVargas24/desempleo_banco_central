@@ -51,21 +51,7 @@ El sistema:
 # 2) Arquitectura
 
 
-API Banco Central
-│
-▼
-Python ETL (pandas)
-│
-▼
-PostgreSQL (Neon Cloud)
-
-Bronze → Silver → Gold
-│
-▼
-Power BI Dataset
-│
-▼
-Dashboards analíticos
+API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronze → Silver → Gold) → Power BI Dataset → Dashboards analíticos
 
 
 Orquestación
