@@ -54,23 +54,9 @@ El sistema:
 API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronze → Silver → Gold) → Power BI Dataset → Dashboards analíticos
 
 
-Orquestación
+- Orquestación: Apache Airflow (Docker)
 
-
-Apache Airflow (Docker)
-
-
-Flujo del DAG
-
-
-Bronze ingestion
-↓
-Silver transformation
-↓
-Gold analytics layer
-↓
-Power BI dataset refresh
-
+- Flujo del DAG: Bronze ingestion → Silver transformation → Gold analytics layer → Power BI dataset refresh
 
 > El pipeline se ejecuta automáticamente **todos los días a las 06:00 AM**.
 
