@@ -246,6 +246,8 @@ El pipeline se ejecuta automáticamente mediante **Apache Airflow**.
 
 > Una vez finalizada la capa **Gold**, el pipeline ejecuta un **refresh automático del dataset en Power BI**.
 
+<img width="1884" height="819" alt="Image" src="https://github.com/user-attachments/assets/05f022fb-27a7-42ee-8e76-0ea13c90a944" />
+
 ---
 
 # 9) CI con GitHub Actions
