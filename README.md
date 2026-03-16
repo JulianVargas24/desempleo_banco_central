@@ -1,4 +1,4 @@
-# JG Analítica – Desempleo en Chile · Data Pipeline (Airflow + Docker + PostgreSQL + Power BI)
+# Desempleo en Chile · Data Pipeline (Airflow + Docker + PostgreSQL + Power BI)
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](#)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon%20Cloud-336791?logo=postgresql&logoColor=white)](#)
