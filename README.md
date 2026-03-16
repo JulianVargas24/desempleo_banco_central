@@ -96,7 +96,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Identificación de desigualdades persistentes  
 - Evaluación de convergencia entre tasas laborales  
 
-<img width="2254" height="1253" alt="{D516FE2C-88F6-4D90-87A7-089AAB10EBE6}" src="https://github.com/user-attachments/assets/d95dc1c0-1cfb-4a8b-b778-0cc9504a766b" />
+<img width="1456" height="817" alt="image" src="https://github.com/user-attachments/assets/3be41f4b-43d1-45d6-8cf5-228ac6b96b2e" />
+
 
 
 ---
@@ -114,7 +115,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Interpretación macroeconómica del desempleo  
 - Identificación de relaciones económicas relevantes  
 
-<img width="2245" height="1255" alt="{8C30BF1E-2A04-4B7F-8633-4C70CB2E5CB7}" src="https://github.com/user-attachments/assets/721c681e-4b57-475e-a223-be661a4a707a" />
+<img width="1453" height="811" alt="image" src="https://github.com/user-attachments/assets/e0e40dc8-af6e-403a-8ac9-5d13ffbd877e" />
+
 
 
 ---
