@@ -1,4 +1,4 @@
-# JG Analítica – Desempleo en Chile · Data Pipeline (Airflow + Docker + PostgreSQL + Power BI)
+# Desempleo en Chile · Data Pipeline (Airflow + Docker + PostgreSQL + Power BI)
 
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?logo=python&logoColor=white)](#)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Neon%20Cloud-336791?logo=postgresql&logoColor=white)](#)
@@ -77,7 +77,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Contexto histórico del mercado laboral  
 - Comparación pandemia vs post-pandemia  
 
-<img width="2244" height="1261" alt="{300A64DC-4E0F-4AFE-8931-0EF2A382BBA7}" src="https://github.com/user-attachments/assets/5cac7f39-7b7b-4a9a-ac3e-2d7c18cdab41" />
+<img width="1451" height="814" alt="image" src="https://github.com/user-attachments/assets/4ec55de6-227d-4bca-b5e5-85956d69f0e7" />
+
 
 
 ---
@@ -95,7 +96,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Identificación de desigualdades persistentes  
 - Evaluación de convergencia entre tasas laborales  
 
-<img width="2254" height="1253" alt="{D516FE2C-88F6-4D90-87A7-089AAB10EBE6}" src="https://github.com/user-attachments/assets/d95dc1c0-1cfb-4a8b-b778-0cc9504a766b" />
+<img width="1456" height="817" alt="image" src="https://github.com/user-attachments/assets/3be41f4b-43d1-45d6-8cf5-228ac6b96b2e" />
+
 
 
 ---
@@ -113,7 +115,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Interpretación macroeconómica del desempleo  
 - Identificación de relaciones económicas relevantes  
 
-<img width="2245" height="1255" alt="{8C30BF1E-2A04-4B7F-8633-4C70CB2E5CB7}" src="https://github.com/user-attachments/assets/721c681e-4b57-475e-a223-be661a4a707a" />
+<img width="1453" height="811" alt="image" src="https://github.com/user-attachments/assets/e0e40dc8-af6e-403a-8ac9-5d13ffbd877e" />
+
 
 
 ---
@@ -246,7 +249,7 @@ El pipeline se ejecuta automáticamente mediante **Apache Airflow**.
 
 > Una vez finalizada la capa **Gold**, el pipeline ejecuta un **refresh automático del dataset en Power BI**.
 
-<img width="1884" height="819" alt="Image" src="https://github.com/user-attachments/assets/05f022fb-27a7-42ee-8e76-0ea13c90a944" />
+<img width="1898" height="823" alt="Image" src="https://github.com/user-attachments/assets/9c19f389-ec17-4f16-b7d1-f9178f1c09e7" />
 
 ---
 
