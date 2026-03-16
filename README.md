@@ -77,7 +77,8 @@ API Banco Central → Python ETL (pandas) → PostgreSQL (Neon Cloud) → (Bronz
 - Contexto histórico del mercado laboral  
 - Comparación pandemia vs post-pandemia  
 
-<img width="2244" height="1261" alt="{300A64DC-4E0F-4AFE-8931-0EF2A382BBA7}" src="https://github.com/user-attachments/assets/5cac7f39-7b7b-4a9a-ac3e-2d7c18cdab41" />
+<img width="1451" height="814" alt="image" src="https://github.com/user-attachments/assets/4ec55de6-227d-4bca-b5e5-85956d69f0e7" />
+
 
 
 ---
