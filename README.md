@@ -263,6 +263,8 @@ El pipeline de **CI**:
 
 > Esto asegura que el pipeline sea **reproducible y estable antes del despliegue**.
 
+<img width="1871" height="816" alt="Image" src="https://github.com/user-attachments/assets/ead134fa-a35b-447c-9f18-63651c28b5f1" />
+
 ---
 
 ⭐ **Proyecto orientado a Data Engineering moderno**
