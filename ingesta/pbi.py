@@ -20,6 +20,9 @@ def run_bronze_pbi():
     df = df.reset_index()
     df.columns = ["fecha", "pbi"]
 
+    # Eliminar duplicados por fecha
+    df = df.drop_duplicates(subset=["fecha"], keep="last")
+
     # Conexión postgresql
     engine = get_engine()
 

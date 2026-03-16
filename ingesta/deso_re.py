@@ -90,6 +90,9 @@ def run_bronze_deso_re():
         "magallanes",
     ]
 
+    # Eliminar duplicados por fecha
+    df = df.drop_duplicates(subset=["fecha"], keep="last")
+
     # Conexión postgresql
     engine = get_engine()
 

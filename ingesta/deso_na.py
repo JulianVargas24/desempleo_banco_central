@@ -38,6 +38,9 @@ def run_bronze_deso_na():
         "desocupacion_hombres",
     ]
 
+    # Eliminar duplicados por fecha
+    df = df.drop_duplicates(subset=["fecha"], keep="last")
+
     # Conexión
     engine = get_engine()
 

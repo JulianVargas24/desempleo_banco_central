@@ -21,6 +21,9 @@ def run_bronze_imacec():
     df = df.reset_index()
     df.columns = ["fecha", "imacec"]
 
+    # Eliminar duplicados por fecha
+    df = df.drop_duplicates(subset=["fecha"], keep="last")
+
     # Conexión postgresql
     engine = get_engine()
 

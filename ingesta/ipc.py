@@ -20,6 +20,9 @@ def run_bronze_ipc():
     df = df.reset_index()
     df.columns = ["fecha", "ipc"]
 
+    # Eliminar duplicados por fecha
+    df = df.drop_duplicates(subset=["fecha"], keep="last")
+
     # Conexión postgresql
     engine = get_engine()
 
